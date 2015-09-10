@@ -7,10 +7,12 @@ class PostsController < ApplicationController
   end
 
   def new
+    @team_options = Team.all.map { |u| [u.name, u.name] }
     @post = Post.new
   end
 
   def create
+    # binding.pry
     @post = Post.new(post_params)
     @post.creator = current_user
 

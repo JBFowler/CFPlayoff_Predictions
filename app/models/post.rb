@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   has_many :post_teams
   has_many :teams, through: :post_teams
 
-  validates :winner, presence: true
+  # validates :winner, presence: true
   validates :team_ids, length: { is: 4}
   
 end
