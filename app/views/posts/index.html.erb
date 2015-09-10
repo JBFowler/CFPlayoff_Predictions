@@ -8,12 +8,12 @@
   </div>
 </div>
 </br>
-<!-- <div class='container'> -->
+<div class='container-fluid'>
   <h1 class='text-center'>Player Picks</h1>
   <hr/>
-  <div class='row' id='index'>
+  <div class='row-fluid'>
     <% @posts.each do |post| %>
-      <div class='span6 well'>
+      <div class='span4 well'>
         <h3 class='text-center'><%= link_to post.creator.username, user_path(post.creator) %>'s Submission:</h3>
         <dl class='dl-horizontal'>
           <dt>Championship Winner:</dt>
@@ -21,13 +21,15 @@
           </br>
           <dt>Playoff Picks:</dt>
             <dd>
-              <% post.teams.each do |team| %>
-                <li> <%= team.name %> </li>
-              <% end %>
+              <ol>
+                  <li> <%= post.seed_one %> </li>
+                  <li> <%= post.seed_two %> </li>
+                  <li> <%= post.seed_three %> </li>
+                  <li> <%= post.seed_four %> </li>
+              </ol>
             </dd>
         </dl>
       </div>
     <% end %>
   </div>
-<!-- </div>
- -->
+</div>

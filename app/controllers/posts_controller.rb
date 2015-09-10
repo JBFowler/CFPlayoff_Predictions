@@ -7,7 +7,6 @@ class PostsController < ApplicationController
   end
 
   def new
-    @team_options = Team.all.map { |u| [u.name, u.name] }
     @post = Post.new
   end
 
@@ -27,7 +26,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:winner, team_ids: [])
+    params.require(:post).permit(:winner, :seed_one, :seed_two, :seed_three, :seed_four) #team_ids: [])
   end
 
   def require_first_time

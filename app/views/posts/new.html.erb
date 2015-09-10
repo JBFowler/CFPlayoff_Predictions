@@ -12,18 +12,76 @@
     </div>
   </div>
 <% end %>
-  <div class='well'>
-    
+  <div class='well span12'> 
     <%= form_for @post do |f| %>
-      <h4>Winning Team:</h4>
-      <%= f.select(:winner, @team_options) %>
+      <h4>2015 College Football Champion:</h4>
+      <%= f.select(:winner, Team.order(:name).all.map { |u| [u.name, u.name] }) %>
       <div class='control-group'>
-        <p><strong>Four Teams to make Playoffs:</strong></p>
-        <%= f.collection_check_boxes :team_ids, Team.order(:name),:id,:name do |cb| %>
+        <p><strong>Four Teams to make Playoffs <small>(seeded 1 - 4 from left to right)</small>:</strong></p>
+        <%= f.select(:seed_one, Team.order(:name).all.map { |u| [u.name, u.name] }) %>
+        <%= f.select(:seed_two, Team.order(:name).all.map { |u| [u.name, u.name] }) %>
+        <%= f.select(:seed_three, Team.order(:name).all.map { |u| [u.name, u.name] }) %>
+        <%= f.select(:seed_four, Team.order(:name).all.map { |u| [u.name, u.name] }) %>
+        <!--<%= f.collection_check_boxes :team_ids, Team.order(:name),:id,:name do |cb| %>
           <% cb.label(class: "checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
-        <% end %>
+        <% end %>-->
       </div>
-      <%= f.submit "Submit", class: 'btn btn-primary' %>
+      <div class='control-group'>
+        <%= f.submit "Submit", class: 'btn btn-primary' %>
+      </div>
     <% end %>
+    <h3 class='text-center'>Available Teams to Choose</h3>
+    <div class='row-fluid'>
+      <div class='well span4' id='new'>
+        <h4 class='text-center'><strong>ACC</strong></h4>
+        <ul>
+          <% Team.where(conference: "ACC").each do |team| %>
+              <li><%= team.name %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class='well span4' id='new'>
+        <h4 class='text-center'><strong>BIG 10</strong></h4>
+        <ul>
+          <% Team.where(conference: "Big 10").each do |team| %>
+              <li><%= team.name %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class='well span4' id='new'>
+        <h4 class='text-center'><strong>BIG 12</strong></h4>
+        <ul>
+          <% Team.where(conference: "Big 12").each do |team| %>
+              <li><%= team.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class='row-fluid' >
+      <div class='well span4' id='new'>
+        <h4 class='text-center'><strong>PAC 12</strong></h4>
+        <ul>
+          <% Team.where(conference: "Pac-12").each do |team| %>
+              <li><%= team.name %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class='well span4' id='new'>
+        <h4 class='text-center'><strong>SEC</strong></h4>
+        <ul>
+          <% Team.where(conference: "SEC").each do |team| %>
+              <li><%= team.name %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class='well span4' id='new'>
+        <h4 class='text-center'><strong>FBS Independents</strong></h4>
+        <ul>
+          <% Team.where(conference: "FBS Independents").each do |team| %>
+              <li><%= team.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
