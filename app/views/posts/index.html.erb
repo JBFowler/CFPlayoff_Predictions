@@ -1,3 +1,33 @@
-<h3>Welcome!</h3>
-
-<p>This is the Postit template. You've access the PostsController, index action. This is the index template. Find me under app/views/posts folder.</p>
+<%= image_tag('CFP_logo.jpg') %>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+    </br>
+      <%= render 'layouts/messages' %>
+    </div>
+  </div>
+</div>
+</br>
+<!-- <div class='container'> -->
+  <h1 class='text-center'>Player Picks</h1>
+  <hr/>
+  <div class='row' id='index'>
+    <% @posts.each do |post| %>
+      <div class='span6 well'>
+        <h3 class='text-center'><%= link_to post.creator.username, user_path(post.creator) %>'s Submission:</h3>
+        <dl class='dl-horizontal'>
+          <dt>Championship Winner:</dt>
+            <dd><%= post.winner %></dd>
+          </br>
+          <dt>Playoff Picks:</dt>
+            <dd>
+              <% post.teams.each do |team| %>
+                <li> <%= team.name %> </li>
+              <% end %>
+            </dd>
+        </dl>
+      </div>
+    <% end %>
+  </div>
+<!-- </div>
+ -->

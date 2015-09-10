@@ -1,0 +1,37 @@
+<div class='container'>
+</br>
+  <% if @user.errors.any? %>
+  <div class='row'>
+    <div class='alert alert-error span8' >
+    <h5>Please fix the following errors: </h5>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+      </div>
+    </div>
+  <% end %>
+  <div class='well'>
+    <%= form_for @user do |f| %>
+    <div class='control-group'>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :location %>
+      <%= f.text_field :location %>
+    </div>
+    <div class='control-group'>
+      <%= f.label 'Favorite Team' %>
+      <%= f.text_field :favorite_team %>
+    </div>
+    <%= f.submit 'Register', class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>
+    

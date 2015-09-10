@@ -1,0 +1,34 @@
+</br>
+<div class='container'>
+  <div class='well'>
+    <dl class='dl-horizontal'>
+      <dt>Username:</dt>
+      <dd><%= @user.username %></dd>
+    </dl>
+    <dl class='dl-horizontal'>
+      <dt>Location:</dt>
+      <dd><%= @user.location %></dd>
+    </dl>
+    <dl class='dl-horizontal'>
+      <dt>Favorite Team:</dt>
+      <dd><%= @user.favorite_team %></dd>
+    </dl>
+  </div>
+  <% if @user.posts.first %>
+    <h5><%= @user.username %>'s Submission</h5>
+
+    <div class='well'>
+      <dl class='dl-horizontal'>
+        <dt>Winner:</dt>
+          <dd><%= @user.posts.first.winner %></dd>
+            </br>
+          <dt>Playoff Picks:</dt>
+          <dd>
+            <% @user.posts.first.teams.each do |team| %>
+              <li> <%= team.name %> </li>
+            <% end %>
+          </dd>
+      </dl>
+    </div>
+  <% end %>
+</div>
