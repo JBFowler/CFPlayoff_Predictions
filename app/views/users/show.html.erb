@@ -19,16 +19,19 @@
 
     <div class='well'>
       <dl class='dl-horizontal'>
-        <dt>Winner:</dt>
-          <dd><%= @user.posts.first.winner %></dd>
-            </br>
+          <dt>Championship Winner:</dt>
+            <dd><%= @user.posts.first.winner %></dd>
+          </br>
           <dt>Playoff Picks:</dt>
-          <dd>
-            <% @user.posts.first.teams.each do |team| %>
-              <li> <%= team.name %> </li>
-            <% end %>
-          </dd>
-      </dl>
+            <dd>
+              <ol>
+                  <li> <%= @user.posts.first.seed_one %> </li>
+                  <li> <%= @user.posts.first.seed_two %> </li>
+                  <li> <%= @user.posts.first.seed_three %> </li>
+                  <li> <%= @user.posts.first.seed_four %> </li>
+              </ol>
+            </dd>
+        </dl>
     </div>
   <% end %>
 </div>
