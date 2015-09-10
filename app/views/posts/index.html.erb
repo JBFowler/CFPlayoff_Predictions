@@ -11,8 +11,9 @@
 <div class='container-fluid'>
   <h1 class='text-center'>Player Picks</h1>
   <hr/>
-  <div class='row-fluid'>
-    <% @posts.each do |post| %>
+    <% @posts.each_slice(3) do |slice_of_posts| %>
+      <div class='row-fluid'>
+        <% slice_of_posts.each do |post| %>
       <div class='span4 well'>
         <h3 class='text-center'><%= link_to post.creator.username, user_path(post.creator) %>'s Submission:</h3>
         <dl class='dl-horizontal'>
@@ -30,6 +31,7 @@
             </dd>
         </dl>
       </div>
+      <% end %>
+      </div>
     <% end %>
-  </div>
 </div>
