@@ -15,13 +15,13 @@
   <div class='well span12'> 
     <%= form_for @post do |f| %>
       <h4>2015 College Football Champion:</h4>
-      <%= f.select(:winner, Team.order(:name).all.map { |u| [u.name, u.name] }) %>
+      <%= f.select(:winner, Team.order(:name).all.map { |u| [u.name, u.name] }, prompt: "Pick Winning Team") %>
       <div class='control-group'>
         <p><strong>Four Teams to make Playoffs <small>(seeded 1 - 4 from left to right)</small>:</strong></p>
-        <%= f.select(:seed_one, Team.order(:name).all.map { |u| [u.name, u.name] }) %>
-        <%= f.select(:seed_two, Team.order(:name).all.map { |u| [u.name, u.name] }) %>
-        <%= f.select(:seed_three, Team.order(:name).all.map { |u| [u.name, u.name] }) %>
-        <%= f.select(:seed_four, Team.order(:name).all.map { |u| [u.name, u.name] }) %>
+        <%= f.select(:seed_one, Team.order(:name).all.map { |u| [u.name, u.name] }, prompt: "Pick 1st seed") %>
+        <%= f.select(:seed_two, Team.order(:name).all.map { |u| [u.name, u.name] }, prompt: "Pick 2nd seed") %>
+        <%= f.select(:seed_three, Team.order(:name).all.map { |u| [u.name, u.name] }, prompt: "Pick 3rd seed") %>
+        <%= f.select(:seed_four, Team.order(:name).all.map { |u| [u.name, u.name] }, prompt: "Pick 4th seed") %>
         <!--<%= f.collection_check_boxes :team_ids, Team.order(:name),:id,:name do |cb| %>
           <% cb.label(class: "checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
         <% end %>-->
